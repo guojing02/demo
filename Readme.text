@@ -1,0 +1,19 @@
+depConfirm(vals, indexs) {
+                let item = null
+                const list = []
+                indexs.forEach((tab,i) => {
+                    if(i === 0){
+                        item = this.depList[tab]
+                        list.push(item)
+                    }else if(item && item.children.length > 0){
+                        item = item.children[tab]
+                        list.push(item)
+                    }
+                })
+                const length = list.length
+                if(length > 0){
+                    this.depId = list[length - 1].id
+                }
+                this.depText = vals.filter(item => item !== undefined).join(' - ')
+                this.isShowDep = false
+            },
